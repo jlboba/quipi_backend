@@ -11,10 +11,12 @@ class PromptList(generics.ListCreateAPIView):
         queryset = Prompt.objects.all()
         playable = self.request.query_params.get('playable', None)
         if playable is not None:
-            if playable == 'true':
+            if playable == 'true' or playable == 't':
                 accepted = True 
-            elif playable == 'false':
+            elif playable == 'false' or playable == 'f':
                 accepted = False 
+            else:
+                accepted = True 
             queryset = queryset.filter(accepted=accepted)
         return queryset
 
