@@ -21,7 +21,7 @@ class Quip(models.Model):
     text = models.CharField(max_length=300)
     times_played = models.IntegerField(default=0)
     times_chosen = models.IntegerField(default=0)
-    prompt_id = models.ForeignKey(Prompt, on_delete=models.CASCADE, related_name='quips')
+    prompt = models.ForeignKey(Prompt, on_delete=models.CASCADE, related_name='quips')
     creator_name = models.CharField(max_length=200)
     accepted = models.BooleanField(default=False)
 
