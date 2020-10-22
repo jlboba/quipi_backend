@@ -1,8 +1,6 @@
 from rest_framework import generics
-from .serializers import PromptSerializer
-from .serializers import QuipSerializer
-from .models import Prompt
-from .models import Quip
+from .serializers import PromptSerializer, QuipSerializer
+from .models import Prompt, Quip
 
 class PromptList(generics.ListCreateAPIView):
     serializer_class = PromptSerializer

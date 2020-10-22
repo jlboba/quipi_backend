@@ -1,6 +1,5 @@
 from rest_framework import serializers 
-from .models import Prompt
-from .models import Quip
+from .models import Prompt, Quip
 
 class QuipSerializer(serializers.ModelSerializer):
     prompt = serializers.StringRelatedField(many=False)
