@@ -6,11 +6,11 @@ class QuipSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Quip
-        fields = ('prompt', 'prompt_id', 'text', 'times_played', 'times_chosen', 'creator_name', 'accepted')
+        fields = ('id', 'prompt', 'prompt_id', 'text', 'times_played', 'times_chosen', 'creator_name', 'accepted')
 
 class PromptSerializer(serializers.ModelSerializer):
     quips = QuipSerializer(many=True, read_only=True)
 
     class Meta:
         model = Prompt
-        fields = ('text', 'creator_name', 'accepted', 'quips')
+        fields = ('id', 'text', 'creator_name', 'accepted', 'quips')
