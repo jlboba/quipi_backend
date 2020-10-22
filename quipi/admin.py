@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Prompt
+from .models import Quip 
 
-# Register your models here.
+admin.site.register(Prompt)
+admin.site.register(Quip)
