@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.permissions import IsAdminUser, AllowAny
 from .serializers import PromptSerializer, QuipSerializer
 from .models import Prompt, Quip
 
@@ -21,6 +22,13 @@ class PromptList(generics.ListCreateAPIView):
 class PromptDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Prompt.objects.all()
     serializer_class = PromptSerializer
+    permission_classes = [IsAdminUser]
+
+    def get_permissions(self):
+        if self.request.method == 'PUT' or self.request.method == 'PATCH' or self.request.method == 'DELETE':
+            return [permission() for permission in self.permission_classes]
+        return [AllowAny()]
+
 
 class QuipList(generics.ListCreateAPIView):
     queryset = Quip.objects.all()
@@ -42,3 +50,9 @@ class QuipList(generics.ListCreateAPIView):
 class QuipDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Quip.objects.all()
     serializer_class = QuipSerializer
+    permission_classes = [IsAdminUser]
+
+    def get_permissions(self):
+        if self.request.method == 'PUT' or self.request.method == 'PATCH' or self.request.method == 'DELETE':
+            return [permission() for permission in self.permission_classes]
+        return [AllowAny()]
