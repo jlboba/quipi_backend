@@ -32,7 +32,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -58,6 +57,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+# Configure cors to whitelist all origins 
+# https://github.com/adamchainz/django-cors-headers#cors_allow_all_origins
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'quipi_django.urls'
 
